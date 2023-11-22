@@ -51,6 +51,26 @@ string BlackBoxUnsafe::randomPwd(int l){
 	return pwd_;
 }
 
+string BlackBoxUnsafe::guessPWD(){              //ich will hier ein Pasworrt such algorithum Implementieren
+    string tempPWD ="123456789123456789123456789";
+    int j=0;
+    int found = 0;
+    while(found==0){
+        for(int i=0;i<SYMBOLS.length();i++){                    //testet jede möglichkeit
+            tempPWD[j]=SYMBOLS[i];
+            cout<<tempPWD<<endl;
+            }
+            j++;
+            if(j ==27){                         //abbruchsbedingung
+            found =1;
+            }
+            if(tempPWD == pwd_){                //wenn Passwort stimmt
+                found = 1;
+            }
+    }
+}
+
+
 void demoTASK1_00(){
 	string pwd("meinpassword");
 	cout << "pwd   : " << pwd << endl;
@@ -58,14 +78,15 @@ void demoTASK1_00(){
 	pwd = ("einpassword");
 	cout << "pwd   : " << pwd << endl;
 	cout << "SHA256: " << sha256(pwd) << endl;
+
 	return;
 }
 
 void demoTASK1_01(){
-	TASK1::BlackBoxUnsafe bs(4,4);
+	TASK1::BlackBoxUnsafe bs(3,5);
 	cout << bs.pwd_ << endl;
 
-	cout << bs.input(bs.pwd_) << endl;
+	cout << bs.input("hallo") << endl;
 
 	return;
 }

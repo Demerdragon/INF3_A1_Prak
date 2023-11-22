@@ -80,8 +80,9 @@ class BlackBoxUnsafe : public IBlackBox{
 public:
 				   BlackBoxUnsafe(int pwdLength, int symbSetSize);
 	virtual string input(string strPwd);
-			string getSymbols();
 
+			string getSymbols();
+			string guessPWD();
 			string pwd_;
 
 protected:

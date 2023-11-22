@@ -19,17 +19,17 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
-			<Target title="all">
-				<Option output="INF3_Prak" prefix_auto="1" extension_auto="1" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-			</Target>
 			<Target title="clean">
 				<Option output="INF3_Prak" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 			</Target>
 			<Target title="doc">
+				<Option output="INF3_Prak" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
+			<Target title="all">
 				<Option output="INF3_Prak" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />

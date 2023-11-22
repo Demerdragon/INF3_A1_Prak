@@ -44,7 +44,7 @@ doc:
 
 
 all:	$(DEMOTARGET)
-	make clean  && make main && make server && make client && make mainTest
+	make clean && make main && make server && make client && make mainTest
 
 run:	main
 	./main
