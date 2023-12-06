@@ -8,10 +8,18 @@
 #include <string>
 #include <iostream>
 #include <unistd.h> //contains various constants
-
+#include "TASK1.H"
 #include "SIMPLESOCKET.H"
 
 using namespace std;
+using namespace TASK1;
+class myClient{
+public:
+   string guessPWD(int pwdLength);
+
+};
+
+
 
 int main() {
 	srand(time(NULL));
@@ -20,7 +28,7 @@ int main() {
 	string msg;
 
 	//connect to host
-	c.conn(host , 2022);
+	c.conn(host , 2023);
 
 	int i=0;
 	bool goOn=1;
@@ -41,3 +49,21 @@ int main() {
 }
 
 
+string myClient::guessPWD(int pwdLength){              //ich will hier ein Pasworrt such algorithum Implementieren
+    string tempPWD;
+    int j=0;
+    int found = 0;
+    int versuche;
+    while(found==false){
+        tempPWD[j]=SYMBOLS[0];
+        for(int i=0;i<SYMBOLS.length();i++){                    //testet jede möglichkeit
+            tempPWD[j]=SYMBOLS[i+1];
+            cout<<tempPWD<<endl;
+            versuche++;
+            }
+            j++;
+            if(j ==27){                         //abbruchsbedingung
+            found =1;
+            }
+    }
+}

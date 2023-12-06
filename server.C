@@ -18,9 +18,27 @@
 
 #include "SIMPLESOCKET.H"
 
+class myServer : public TCPserver{
+public:
+    myServer(int port, int maxDataSize) : TCPserver(port,maxDataSize){};
+
+    string myResponse(string input);
+};
 
 int main(){
 	srand(time(nullptr));
-	TCPserver srv(2022,25);
+	myServer srv(2023,25);
 	srv.run();
+}
+
+
+
+
+
+
+string myServer::myResponse(string input){
+    if(input.compare(0,6,"NEWPWD")== 0){
+    return string("OKEY");
+    }
+    return string("OUTPUT");
 }

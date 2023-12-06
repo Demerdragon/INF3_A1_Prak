@@ -22,10 +22,6 @@ using namespace std;
 
 int main(){
 	srand(time(nullptr));
-	TASK1::demoTASK1_01();
-	TASK1::demoTASK1_00();
-	TASK1::BlackBoxUnsafe g(4,4);
-	g.guessPWD();
     return 0;
 }
 
