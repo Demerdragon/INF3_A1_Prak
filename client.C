@@ -17,18 +17,17 @@ using namespace TASK1;
 class myClient : public TCPclient{
 private:
     int versuche;
+    int ablauf;
+    string tempPWD;
 public:
    string guessPWD(int pwdLength);
-
 };
 
 
 
 int main() {
-    myClient c;
-    c.guessPWD(5);
-	/*srand(time(NULL));
-	TCPclient c;
+	srand(time(NULL));
+	myClient c;
 	string host = "localhost";
 	string msg;
 
@@ -41,43 +40,51 @@ int main() {
 			msg = string("BYEBYE");
 			goOn = 0;
 		}else{
-			msg = string("client wants this");
+            myClient c;
+			msg = c.guessPWD(5);
 		}
+        c.guessPWD(5);
 		cout << "client sends:" << msg << endl;
 		c.sendData(msg);
+
+		c.sendData(c.guessPWD(5));
 		msg = c.receive(32);
 		cout << "got response:" << msg << endl;
 		sleep(1);
 
-	}*/
+	}
 }
 
 
 string myClient::guessPWD(int pwdLength){              //ich will hier ein Pasworrt such algorithum Implementieren
-    int j = 1,i = 0, b = 0;
+    myClient c;
     bool found;
-    string tempPWD;
     for(int k=0; k<pwdLength;k++){                    //länge von dem Password wird eingetragen
         char len[pwdLength];
         len[k]= 'A';
         tempPWD=len;
-    }
-    while(found==false){
-        i = 0;
-        for(i;i<SYMBOLS.length();i++){                    //testet jede möglichkeit
-            tempPWD[j]=SYMBOLS[i];
-            cout<<tempPWD<<endl;
+        }
+        while(found == false){
+            for(int i=0;i<SYMBOLS.length();i++){                    //geht das Alphabet durch
+                tempPWD[0]=SYMBOLS[i];
+                for(int j=0;i<SYMBOLS.length();i++){                //geht das Alphabet durch
+                    tempPWD[1]=SYMBOLS[i];
+                    for(int l=0;i<SYMBOLS.length();i++){            //geht das Alphabet durch
+                        tempPWD[2]=SYMBOLS[i];
+                        for(int m=0;i<SYMBOLS.length();i++){        //geht das Alphabet durch
+                            tempPWD[3]=SYMBOLS[i];
+                            for(int n=ablauf;i<SYMBOLS.length();i++){    //geht das Alphabet durch
+                                tempPWD[4]=SYMBOLS[i];
+                                cout << "client sends:" << tempPWD << endl;
+                                c.sendData(tempPWD);
+                                versuche++;
+                                return tempPWD;
+                            }
+                        }
+                    }
+                }
             }
-            tempPWD[j]=SYMBOLS[i];
-            j++;
-            if(j == pwdLength){
-                j=1;
-            }
-            if(j ==27){                         //abbruchsbedingung
-            found =true;
-            }
-            else{
-                versuche++;
-            }
-    }
+
+        }
 }
+
