@@ -13,7 +13,10 @@
 
 using namespace std;
 using namespace TASK1;
-class myClient{
+
+class myClient : public TCPclient{
+private:
+    int versuche;
 public:
    string guessPWD(int pwdLength);
 
@@ -22,14 +25,15 @@ public:
 
 
 int main() {
-	srand(time(NULL));
+    myClient c;
+    c.guessPWD(5);
+	/*srand(time(NULL));
 	TCPclient c;
 	string host = "localhost";
 	string msg;
 
 	//connect to host
 	c.conn(host , 2023);
-
 	int i=0;
 	bool goOn=1;
 	while(goOn){ // send and receive data
@@ -45,25 +49,35 @@ int main() {
 		cout << "got response:" << msg << endl;
 		sleep(1);
 
-	}
+	}*/
 }
 
 
 string myClient::guessPWD(int pwdLength){              //ich will hier ein Pasworrt such algorithum Implementieren
+    int j = 1,i = 0, b = 0;
+    bool found;
     string tempPWD;
-    int j=0;
-    int found = 0;
-    int versuche;
+    for(int k=0; k<pwdLength;k++){                    //länge von dem Password wird eingetragen
+        char len[pwdLength];
+        len[k]= 'A';
+        tempPWD=len;
+    }
     while(found==false){
-        tempPWD[j]=SYMBOLS[0];
-        for(int i=0;i<SYMBOLS.length();i++){                    //testet jede möglichkeit
-            tempPWD[j]=SYMBOLS[i+1];
+        i = 0;
+        for(i;i<SYMBOLS.length();i++){                    //testet jede möglichkeit
+            tempPWD[j]=SYMBOLS[i];
             cout<<tempPWD<<endl;
-            versuche++;
             }
+            tempPWD[j]=SYMBOLS[i];
             j++;
+            if(j == pwdLength){
+                j=1;
+            }
             if(j ==27){                         //abbruchsbedingung
-            found =1;
+            found =true;
+            }
+            else{
+                versuche++;
             }
     }
 }
