@@ -9,7 +9,8 @@
 #include <cstring> // contains string functions
 #include <cerrno> //It defines macros for reporting and retrieving error conditions through error codes
 #include <ctime> //contains various functions for manipulating date and time
-
+#include <iostream>
+#include <string>
 #include <unistd.h> //contains various constants
 #include <sys/types.h> //contains a number of basic derived types that should be used whenever appropriate
 #include <arpa/inet.h> // defines in_addr structure
@@ -17,10 +18,16 @@
 #include <netinet/in.h> //contains constants and structures needed for internet domain addresses
 
 #include "SIMPLESOCKET.H"
+#include "TASK1.H"
+
 
 class myServer : public TCPserver{
+protected:
+    TASK1::BlackBoxUnsafe *b;
 public:
-    myServer(int port, int maxDataSize) : TCPserver(port,maxDataSize){};
+    myServer(int port, int maxDataSize) : TCPserver(port,maxDataSize){
+        b = new TASK1::BlackBoxUnsafe(4,10);
+    };
 
     string myResponse(string input);
 };
@@ -31,14 +38,55 @@ int main(){
 	srv.run();
 }
 
+//string genpwd (int pwdLength)
 
+/*string myServer::checkpwd(string pwdclient){
+    if(pwdclient.compare(0,6,)== 0){
+    return string("OKEY");
 
-
+    }
+    return string("OUTPUT");
+}*/
 
 
 string myServer::myResponse(string input){
+    int pwdlength, abclength;
+
+    if(input.compare(0,7,"NEWPWD[")== 0){       //Suche nach Kommando für das Erstellen eines neuen Passworts
+        sscanf(input.c_str(), "NEWPWD[%i,%i]", &pwdlength, &abclength);
+        if (pwdlength < 4 || pwdlength > 12){   //Das Passwort soll zwischen 4 und 12 Zeichen lang sein.
+            return string("Please choose password length between 4 - 12.");
+        }
+        if (abclength < 2 || abclength > 62){
+            return string("Please choose symbolset size between 2 - 62.");
+            //Symbole sind in TASK1.H unter der Variable SYMBOLS gespeichert. Bei einem neuen Passwort kann die Auswahl an Zeichen dadurch  beschränkt werden,
+            //dass man die Länge abclength angibt. Dann nimmt er nur die ersten Zeichen aus dem string.
+        }
+        //Hier muss noch das eigentliche Generieren des Passworts programmiert werden.
+        return string("New Password generated.");
+    }
+
+    if(input.compare(0,4,"PWD[") == 0){     //Suche nach Kommando für Raten eines Passworts.
+        string pwd_try;
+
+        std::size_t ende = input.find("]");
+        size_t length = ende - 4;
+        if (length < 5 || length > 13) return string("Password must be between 4 - 12 characters.");
+        pwd_try = input.substr(4, length);      //Aus dem input-string wird alles zwischen [ und ] extrahiert.
+
+        //Hier muss noch das Checken des Passworts mit der BlackBox programmiert werden.
+        return pwd_try;
+    }
+
+
+
+    return string("Unknown command./n");        //Falls keiner der oben genannten Kommandos eingegeben wurde
+}
+
+
+/*string myServer::myResponse(string input){
     if(input.compare(0,6,"NEWPWD")== 0){
     return string("OKEY");
     }
     return string("OUTPUT");
-}
+}*/
