@@ -2,24 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="all" />
+	<File name="main.C" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="605" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="SHA256.C" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="16" />
-		</Cursor>
-	</File>
-	<File name="TASK1.C" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1425" topLine="45" />
-		</Cursor>
-	</File>
-	<File name="Makefile" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="878" topLine="20" />
-		</Cursor>
-	</File>
-	<File name="SIMPLESOCKET.H" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="SHA256.H" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -27,19 +17,34 @@
 			<Cursor1 position="0" topLine="91" />
 		</Cursor>
 	</File>
-	<File name="main.C" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="SIMPLESOCKET.C" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="660" topLine="4" />
+			<Cursor1 position="3821" topLine="188" />
+		</Cursor>
+	</File>
+	<File name="Makefile" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="878" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="TASK1.C" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1425" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="client.C" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="530" topLine="34" />
+		</Cursor>
+	</File>
+	<File name="SIMPLESOCKET.H" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="TASK1.H" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1259" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="SIMPLESOCKET.C" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3821" topLine="188" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

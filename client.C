@@ -37,7 +37,6 @@ int main() {
 	int i=0;
 	bool goOn=1;
 	while(goOn){ // send and receive data
-            myClient c;
 			msg = c.randPWD(12,5);
 		cout << "client sends:" << msg << endl;
 		c.sendData(msg);
