@@ -10,6 +10,7 @@
 #include <unistd.h> //contains various constants
 #include "TASK1.H"
 #include "SIMPLESOCKET.H"
+#include <sstream>
 
 using namespace std;
 using namespace TASK1;
@@ -35,9 +36,22 @@ int main() {
 	//connect to host
 	c.conn(host , 2023);
 	int i=0;
+	int a = 1;
+	int len = 12;
+    int Slen = 5;
 	bool goOn=1;
 	while(goOn){ // send and receive data
-			msg = c.randPWD(12,5);
+        while(a == 1){
+            std::ostringstream oss;
+            oss <<"NEWPWD["<<len<<","<<Slen<<"]";
+            msg = oss.str();
+            cout << "client sends:" << msg << endl;
+            c.sendData(msg);
+            msg = c.receive(32);
+            cout << "got response:" << msg << endl;
+            a = 0;
+        }
+        msg = c.randPWD(len,Slen);
 		cout << "client sends:" << msg << endl;
 		c.sendData(msg);
 		msg = c.receive(32);
@@ -77,12 +91,16 @@ string myClient::guessPWD(int pwdLength){              //ich will hier ein Paswo
 }
 
 string myClient::randPWD(int pwdLength,int SymbolLen){
-    string tempPWD = SYMBOLS.substr(0,pwdLength+7);
-    tempPWD= "PWD["
+    string tempPWD = SYMBOLS.substr(0,pwdLength+4);
+    tempPWD[0]= 'P';
+    tempPWD[1]= 'W';
+    tempPWD[2]= 'D';
+    tempPWD[3]= '[';
     int randIdx;
-    for(int i = 7;i<pwdLength;i++){
+    for(int i = 4;i<pwdLength;i++){
         randIdx = rand()% SymbolLen;
         tempPWD[i] = SYMBOLS[randIdx];
     }
+    tempPWD[pwdLength+3]= ']';
 	return tempPWD;
 }
