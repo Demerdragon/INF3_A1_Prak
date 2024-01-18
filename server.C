@@ -62,8 +62,9 @@ string myServer::myResponse(string input){
             //Symbole sind in TASK1.H unter der Variable SYMBOLS gespeichert. Bei einem neuen Passwort kann die Auswahl an Zeichen dadurch  beschränkt werden,
             //dass man die Länge abclength angibt. Dann nimmt er nur die ersten Zeichen aus dem string.
         }
-        //Hier muss noch das eigentliche Generieren des Passworts programmiert werden.
-        return string("New Password generated.");
+        delete b;
+        b = new TASK1::BlackBoxUnsafe(pwdlength, abclength);
+        return b->pwd_;
     }
 
     if(input.compare(0,4,"PWD[") == 0){     //Suche nach Kommando für Raten eines Passworts.
@@ -71,11 +72,9 @@ string myServer::myResponse(string input){
 
         std::size_t ende = input.find("]");
         size_t length = ende - 4;
-        if (length < 5 || length > 13) return string("Password must be between 4 - 12 characters.");
+        if (length < 4 || length > 12) return string("Password must be between 4 - 12 characters.");
         pwd_try = input.substr(4, length);      //Aus dem input-string wird alles zwischen [ und ] extrahiert.
-
-        //Hier muss noch das Checken des Passworts mit der BlackBox programmiert werden.
-        return pwd_try;
+        return b->input(pwd_try);
     }
 
 
