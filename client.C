@@ -91,16 +91,17 @@ string myClient::guessPWD(int pwdLength){              //ich will hier ein Paswo
 }
 
 string myClient::randPWD(int pwdLength,int SymbolLen){
-    string tempPWD = SYMBOLS.substr(0,pwdLength+4);
+    string tempPWD = SYMBOLS.substr(0,pwdLength+5);
     tempPWD[0]= 'P';
     tempPWD[1]= 'W';
     tempPWD[2]= 'D';
     tempPWD[3]= '[';
     int randIdx;
-    for(int i = 4;i<pwdLength;i++){
+    for(int i = 4;i<=pwdLength+4;i++){
         randIdx = rand()% SymbolLen;
         tempPWD[i] = SYMBOLS[randIdx];
     }
-    tempPWD[pwdLength+3]= ']';
+    tempPWD[pwdLength+4]= ']';
+
 	return tempPWD;
 }
