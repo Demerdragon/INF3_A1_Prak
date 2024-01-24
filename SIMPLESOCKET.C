@@ -50,7 +50,7 @@ bool TCPclient::conn(string address , int port){
 			perror("Could not create socket");
 		}
 
-		cout<<"Socket created\n";
+		//cout<<"Socket created\n";
 	}else { /* OK , nothing */ }
 
 	//setup address structure
@@ -74,7 +74,7 @@ bool TCPclient::conn(string address , int port){
 			//strcpy(ip , inet_ntoa(*addr_list[i]) );
 			server.sin_addr = *addr_list[i];
 
-			cout<<address<<" resolved to "<<inet_ntoa(*addr_list[i])<<endl;
+			//cout<<address<<" resolved to "<<inet_ntoa(*addr_list[i])<<endl;
 
 			break;
 		}
@@ -91,7 +91,7 @@ bool TCPclient::conn(string address , int port){
 		return 1;
 	}
 
-	cout<<"Connected\n";
+	//cout<<"Connected\n";
 	return true;
 }
 

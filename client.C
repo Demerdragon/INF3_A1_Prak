@@ -35,28 +35,49 @@ int main() {
 
 	//connect to host
 	c.conn(host , 2023);
+
 	int i=0;
 	int a = 1;
-	int len = 12;
+	int len = 4;
     int Slen = 5;
+    unsigned int count,hacked;
 	bool goOn=1;
+	//cout<<"PWDLength length: ";cin >> len;
+	//cout<<"Symbol length: ";cin >> Slen;
+	cout<<"alphlng,pwlng,tries"<<endl;
 	while(goOn){ // send and receive data
         while(a == 1){
             std::ostringstream oss;
             oss <<"NEWPWD["<<len<<","<<Slen<<"]";
             msg = oss.str();
-            cout << "client sends:" << msg << endl;
+            //cout << "client sends:" << msg << endl;
             c.sendData(msg);
             msg = c.receive(32);
-            cout << "got response:" << msg << endl;
+            //cout << "got response:" << msg << endl;
             a = 0;
         }
         msg = c.randPWD(len,Slen);
-		cout << "client sends:" << msg << endl;
+		//cout << "client sends:" << msg << endl;
 		c.sendData(msg);
 		msg = c.receive(32);
-		cout << "got response:" << msg << endl;
-		sleep(1);
+		//cout << "got response:" << msg << endl;
+		if(msg.compare(0,15,"ACCESS ACCEPTED")== 0){
+            a=1;
+            cout<<Slen<<","<<len<<","<<count<<endl;
+            count = 0;
+            hacked++;
+            if(hacked >= 10){
+            cout<<",,=STABW(C2:C"<<hacked+1<<")"<<",stabw"<<endl;
+            cout<<",,=MITTELWERT(C2:C"<<hacked+1<<")"<<",mittelwert"<<endl;
+                hacked = 0;
+                goOn = false;
+                a = 0;
+            }
+		}
+		else{
+            count++;
+		}
+		sleep(0);
 
 	}
 }
