@@ -5,7 +5,6 @@
  *      Author: aml
  */
 
-
 /**
  *
  * \file TASK1.H
@@ -14,8 +13,6 @@
  * of check sum calculation.
  *
  */
-
-
 
 #ifndef TASK1_H_
 #define TASK1_H_
@@ -33,8 +30,6 @@ using namespace std;
  *
  */
 namespace TASK1{
-
-
 
 /**
  *
@@ -98,19 +93,15 @@ protected:
  * \brief Implements a more safe password checker where only the
  * password's checksum is stored.
  *
- * Notice, implementation is not finished.
+ * removed definition of constructor, moved to TASK1.C
  *
  *
  */
 class BlackBoxSafe : public BlackBoxUnsafe{
-	/// \todo  Implementation of class BlackBoxSafe needs to be finalized.
 public:
-	BlackBoxSafe(int pwdLength, int symbSetSize) : BlackBoxUnsafe(pwdLength, symbSetSize){;};
-	virtual string input(string strPwd){return string("undefined");};           //Konstrukter erweitern
+                   BlackBoxSafe(int pwdLength, int symbSetSize);
+    virtual string input(string strPwd);
 };
-
-
-
 
 /**
  *
@@ -122,12 +113,18 @@ void demoTASK1_00();
 
 /**
  *
- * \brief Simple demonstration of using the password checker.
+ * \brief Simple demonstration of using the password checker unsave.
  *
  */
 void demoTASK1_01();
 
-} // end namespace TASK1
+/**
+ *
+ * \brief Simple demonstration of using the password checker save.
+ *
+ */
+void demoTASK1_02();
 
+} // end namespace TASK1
 
 #endif /* TASK1_H_ */
