@@ -88,7 +88,7 @@ public:
 /**
  *
  * \brief Constructor, creates a password
- *  \param pwdLenght Lenght of the to be created password
+ *  \param pwdLength Length of the to be created password
  *  \param symbSetSize Max number of different characters used in the password
  *         Index for const string SYMBOLS
  *
@@ -129,7 +129,7 @@ protected:
 /**
  *
  * \brief Function to create a random password
- *  \param Length of the password to be created
+ *  \param pwdLength Length of the password to be created
  *
  */
 	string randomPwd(int pwdLength);
