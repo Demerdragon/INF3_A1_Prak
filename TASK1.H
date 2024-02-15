@@ -58,10 +58,21 @@ const unsigned int MINIMAL_PWD_LENGTH = 4;
  */
 class IBlackBox{
 public:
+
+/**
+ *
+ * \brief Comparing the input password to the stored password
+ *
+ */
 	virtual string input(string strPwd) = 0;
+
+/**
+ *
+ * \brief Returning the used alphabet
+ *
+ */
 	virtual string getSymbols() = 0;
 };
-
 
 /**
  *
@@ -73,16 +84,69 @@ public:
  */
 class BlackBoxUnsafe : public IBlackBox{
 public:
+
+/**
+ *
+ * \brief Constructor, creates a password
+ *  \param pwdLength Length of the to be created password
+ *  \param symbSetSize Max number of different characters used in the password
+ *         Index for const string SYMBOLS
+ *
+ */
 				   BlackBoxUnsafe(int pwdLength, int symbSetSize);
+
+/**
+ *
+ * \brief Gets a password and compares it to the stored plain text
+ *        Returns "ACCESS ACCEPTED" or "ACCESS DENIED"
+ *
+ */
 	virtual string input(string strPwd);
 
+/**
+ *
+ * \brief Returns the used set of Symbols stored in char *charSymbArray_
+ *
+ */
 			string getSymbols();
+
+/**
+ *
+ * \brief Algorythm to brute force passwords
+ *
+ */
 			string guessPWD();
+
+/**
+ *
+ * \brief Variable to store the correct password
+ *
+ */
 			string pwd_;
 
 protected:
+
+/**
+ *
+ * \brief Function to create a random password
+ *  \param pwdLength Length of the password to be created
+ *
+ */
 	string randomPwd(int pwdLength);
+
+/**
+ *
+ * \brief Used set of characters for the password
+ *
+ */
 	char * charSymbArray_;
+
+/**
+ *
+ * \brief Stores the number of different Symbols used
+ *        delivers the highes index used of const string SYMBOLS
+ *
+ */
 	int    lengthSymbArray_;
 };
 
@@ -93,13 +157,27 @@ protected:
  * \brief Implements a more safe password checker where only the
  * password's checksum is stored.
  *
- * removed definition of constructor, moved to TASK1.C
+ * Removed definition of constructor, moved to TASK1.C
  *
  *
  */
 class BlackBoxSafe : public BlackBoxUnsafe{
 public:
+
+/**
+ *
+ * \brief Constructor, creates a random password
+ *  \param pwdLength length of the to be created password
+ *  \param symbSetSize number of the max different available characters
+ *
+ */
                    BlackBoxSafe(int pwdLength, int symbSetSize);
+
+/**
+ *
+ * \brief Overrighting the comparison from BlackBoxUnsave's plain text comparison with hash comparison
+ *
+ */
     virtual string input(string strPwd);
 };
 
