@@ -23,10 +23,10 @@
 
 class myServer : public TCPserver{
 protected:
-    TASK1::BlackBoxUnsafe *b;
+    TASK1::BlackBoxSafe *b;
 public:
     myServer(int port, int maxDataSize) : TCPserver(port,maxDataSize){
-        b = new TASK1::BlackBoxUnsafe(4,10);
+        b = new TASK1::BlackBoxSafe(4,10);
     };
 
     string myResponse(string input);
@@ -38,15 +38,6 @@ int main(){
 	srv.run();
 }
 
-//string genpwd (int pwdLength)
-
-/*string myServer::checkpwd(string pwdclient){
-    if(pwdclient.compare(0,6,)== 0){
-    return string("OKEY");
-
-    }
-    return string("OUTPUT");
-}*/
 
 
 string myServer::myResponse(string input){
@@ -63,7 +54,7 @@ string myServer::myResponse(string input){
             //dass man die Länge abclength angibt. Dann nimmt er nur die ersten Zeichen aus dem string.
         }
         delete b;
-        b = new TASK1::BlackBoxUnsafe(pwdlength, abclength);
+        b = new TASK1::BlackBoxSafe(pwdlength, abclength);
         return b->pwd_;
     }
 
@@ -81,11 +72,3 @@ string myServer::myResponse(string input){
 
     return string("Unknown command./n");        //Falls keiner der oben genannten Kommandos eingegeben wurde
 }
-
-
-/*string myServer::myResponse(string input){
-    if(input.compare(0,6,"NEWPWD")== 0){
-    return string("OKEY");
-    }
-    return string("OUTPUT");
-}*/
