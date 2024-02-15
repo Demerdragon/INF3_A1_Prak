@@ -20,15 +20,39 @@
 #include "SIMPLESOCKET.H"
 #include "TASK1.H"
 
-
+/**
+ *
+ *  \class myServer
+ *
+ *  \brief Implements a server that can generate random passwords
+ *          and check if the sent password is correct.
+ *
+ *
+ */
 class myServer : public TCPserver{
 protected:
     TASK1::BlackBoxSafe *b;
 public:
+
+/**
+ *
+ * \brief Constructor for the password-server
+ *  \param port declares the port which the client connects to
+ *  \param maxDataSize Defines the maximum size for data packets
+ *         that can be sent to the server
+ *
+ */
     myServer(int port, int maxDataSize) : TCPserver(port,maxDataSize){
         b = new TASK1::BlackBoxSafe(4,10);
     };
-
+/**
+ *
+ * \brief myResponse detects and executes sent commands and
+ *          returns messages based on the commands
+ *  \param input data sent from the client
+ *
+ *
+ */
     string myResponse(string input);
 };
 
