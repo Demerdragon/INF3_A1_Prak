@@ -14,7 +14,6 @@
 
 namespace TASK1{
 
-
 string BlackBoxUnsafe::getSymbols(){
 	return string(charSymbArray_);
 };
@@ -52,11 +51,11 @@ string BlackBoxUnsafe::randomPwd(int l){
 }
 
 BlackBoxSafe::BlackBoxSafe(int pwdLength, int symbSetSize) : BlackBoxUnsafe(pwdLength, symbSetSize){
-    pwd_ = sha256(pwd_);
+    pwd_ = sha256(pwd_); //store as hash value
 }
 
 string BlackBoxSafe::input(string strPwd){
-    if(sha256(strPwd).compare(pwd_) == 0) {
+    if(sha256(strPwd).compare(pwd_) == 0) { //comparing hash values
         return string("ACCESS ACCEPTED");
     }
     return string ("ACCESS DENIED");
@@ -70,7 +69,6 @@ void demoTASK1_00(){
 	pwd = ("einpassword");
 	cout << "pwd   : " << pwd << endl;
 	cout << "SHA256: " << sha256(pwd) << endl << endl;
-
 	return;
 }
 
