@@ -38,9 +38,9 @@ int main() {
 
 	int i=0;
 	int a = 1;
-	int len = 4;
+	int len = 6;
     int Slen = 5;
-    unsigned int count,hacked;
+    long long count,hacked;
 	bool goOn=1;
 	//cout<<"PWDLength length: ";cin >> len;
 	//cout<<"Symbol length: ";cin >> Slen;
@@ -66,7 +66,7 @@ int main() {
             cout<<Slen<<","<<len<<","<<count<<endl;
             count = 0;
             hacked++;
-            if(hacked >= 100){                  //wie Oft der Versuch durch geführt werden muss;
+            if(hacked >= 20){                  //wie Oft der Versuch durch geführt werden muss;
                 cout<<",,=STABW(C2:C"<<hacked+1<<")"<<",stabw"<<endl;
                 cout<<",,=MITTELWERT(C2:C"<<hacked+1<<")"<<",mittelwert"<<endl;
                 hacked = 0;
@@ -82,7 +82,15 @@ int main() {
 	}
 }
 
-
+/**
+ *
+ * \brief Method,Generates a Random Paswort
+ *  \param input,pwdLength Length of the to be created password
+ *  \param input,SymbolLen the Symbols that are allowed to be used in the Password
+ *  \param output,tempPWD stand for tempurary Password this will generate a random Password with specific characteristic
+ *
+ *
+ */
 string myClient::randPWD(int pwdLength,int SymbolLen){
     string tempPWD = SYMBOLS.substr(0,pwdLength+5);
     tempPWD[0]= 'P';
