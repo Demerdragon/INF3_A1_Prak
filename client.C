@@ -83,34 +83,6 @@ int main() {
 }
 
 
-string myClient::guessPWD(int pwdLength){              //ich will hier ein Pasworrt such algorithum Implementieren
-    myClient c;
-    bool found;
-    string tempPWD = SYMBOLS.substr(0,pwdLength);
-        while(found == false){
-            for(int i=0;i<SYMBOLS.length();i++){                    //geht das Alphabet durch
-                tempPWD[0]=SYMBOLS[i];
-                for(int j=0;i<SYMBOLS.length();i++){                //geht das Alphabet durch
-                    tempPWD[1]=SYMBOLS[i];
-                    for(int l=0;i<SYMBOLS.length();i++){            //geht das Alphabet durch
-                        tempPWD[2]=SYMBOLS[i];
-                        for(int m=0;i<SYMBOLS.length();i++){        //geht das Alphabet durch
-                            tempPWD[3]=SYMBOLS[i];
-                            for(int n=ablauf;i<SYMBOLS.length();i++){    //geht das Alphabet durch
-                                tempPWD[4]=SYMBOLS[i];
-                                cout << "client sends:" << tempPWD << endl;
-                                c.sendData(tempPWD);
-                                versuche++;
-                                return tempPWD;
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-}
-
 string myClient::randPWD(int pwdLength,int SymbolLen){
     string tempPWD = SYMBOLS.substr(0,pwdLength+5);
     tempPWD[0]= 'P';
