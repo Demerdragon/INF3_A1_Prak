@@ -1,0 +1,6 @@
+alphlng,pwlng,tries
+5,9,391980
+5,9,1001845
+5,9,789705
+,,=STABW(C2:C4),stabw
+,,=MITTELWERT(C2:C4),mittelwert
