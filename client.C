@@ -61,14 +61,14 @@ int main() {
 		c.sendData(msg);
 		msg = c.receive(32);
 		//cout << "got response:" << msg << endl;
-		if(msg.compare(0,15,"ACCESS ACCEPTED")== 0){
+		if(msg.compare(0,15,"ACCESS ACCEPTED")== 0){            // wenn Passwort geknackt ist
             a=1;
             cout<<Slen<<","<<len<<","<<count<<endl;
             count = 0;
             hacked++;
-            if(hacked >= 10){
-            cout<<",,=STABW(C2:C"<<hacked+1<<")"<<",stabw"<<endl;
-            cout<<",,=MITTELWERT(C2:C"<<hacked+1<<")"<<",mittelwert"<<endl;
+            if(hacked >= 100){                  //wie Oft der Versuch durch geführt werden muss;
+                cout<<",,=STABW(C2:C"<<hacked+1<<")"<<",stabw"<<endl;
+                cout<<",,=MITTELWERT(C2:C"<<hacked+1<<")"<<",mittelwert"<<endl;
                 hacked = 0;
                 goOn = false;
                 a = 0;
